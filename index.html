@@ -456,7 +456,7 @@
           <!-- Horario -->
           <div style="margin-bottom:32px; padding-bottom:32px; border-bottom:1px solid #2E1F14;">
             <p style="font-family:'DM Sans',sans-serif; font-size:0.65rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:#9B1C1C; margin-bottom:12px;">Horario</p>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px 24px;">
+            <div class="horario-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:8px 24px;">
               <span style="font-family:'DM Sans',sans-serif; font-size:0.85rem; color:#A89880;">Lunes - Viernes</span>
               <span style="font-family:'DM Sans',sans-serif; font-size:0.85rem; color:#F2EDE4;">12:00 PM - 11:00 PM</span>
               <span style="font-family:'DM Sans',sans-serif; font-size:0.85rem; color:#A89880;">Sabado</span>
@@ -592,30 +592,164 @@
 
 
   <!-- ═══════════════════════════════════════
-       MOBILE RESPONSIVE STYLES
+       RESPONSIVE STYLES
   ═══════════════════════════════════════ -->
   <style>
-    @media (max-width: 767px) {
-      .menu-grid {
-        grid-template-columns: 1fr !important;
-      }
-      .location-grid {
-        grid-template-columns: 1fr !important;
-        gap: 40px !important;
-      }
-      .contact-grid {
-        grid-template-columns: 1fr !important;
-      }
-      header .nav-link {
-        display: none;
-      }
-      /* Hide desktop nav on mobile, keep logo + cta */
-    }
+
+    /* ── Tablet: 768–1023px ── */
     @media (max-width: 1023px) {
       .menu-grid {
         grid-template-columns: repeat(2, 1fr) !important;
       }
     }
+
+    /* ── Mobile: max 767px ── */
+    @media (max-width: 767px) {
+
+      /* NAV */
+      header > div {
+        padding: 0 20px !important;
+      }
+      header .nav-link {
+        display: none !important;
+      }
+      /* Logo wordmark también se esconde para dar espacio */
+      header a > span {
+        display: none !important;
+      }
+
+      /* HERO */
+      section[style*="min-height:100dvh"] > div[style*="min-height:100dvh"] {
+        padding: 0 20px !important;
+        padding-top: 68px !important;
+      }
+      section[style*="min-height:100dvh"] > div > div {
+        max-width: 100% !important;
+        padding: 60px 0 40px !important;
+      }
+      /* Hero overlay más oscuro en mobile para legibilidad */
+      section[style*="min-height:100dvh"] > div:first-child > div:first-child {
+        background: linear-gradient(to bottom, rgba(10,7,5,0.75) 0%, rgba(10,7,5,0.55) 50%, rgba(10,7,5,0.85) 100%) !important;
+      }
+
+      /* MENU */
+      section#menu {
+        padding: 64px 0 !important;
+      }
+      section#menu > div {
+        padding: 0 20px !important;
+      }
+      section#menu > div > div:first-child {
+        margin-bottom: 40px !important;
+      }
+      .menu-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .menu-grid article img {
+        height: 180px !important;
+      }
+      .menu-grid article > div:last-child {
+        padding: 18px !important;
+      }
+
+      /* BANNER SEPARADOR */
+      div[style*="height:340px"] {
+        height: 220px !important;
+      }
+
+      /* UBICACION */
+      section#ubicacion {
+        padding: 64px 0 !important;
+      }
+      section#ubicacion > div {
+        padding: 0 20px !important;
+      }
+      .location-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+      /* Mapa más corto en mobile */
+      section#ubicacion iframe {
+        height: 260px !important;
+      }
+      /* Horario — apilar días y horas */
+      .horario-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2px 0 !important;
+      }
+      .horario-grid span:nth-child(odd) {
+        margin-top: 10px;
+        color: #A89880 !important;
+        font-size: 0.75rem !important;
+      }
+      .horario-grid span:nth-child(even) {
+        font-size: 0.85rem !important;
+      }
+
+      /* CONTACTO */
+      section#contacto {
+        padding: 64px 0 !important;
+      }
+      section#contacto > div {
+        padding: 0 20px !important;
+      }
+      section#contacto > div > div:first-child {
+        margin-bottom: 40px !important;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+      .contact-grid > div {
+        padding: 28px 20px !important;
+      }
+
+      /* FOOTER */
+      footer > div {
+        padding: 0 20px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+      }
+      footer nav {
+        gap: 20px !important;
+      }
+
+      /* BOTONES — touch-friendly */
+      .btn-primary, .btn-ghost {
+        padding: 16px 28px !important;
+        font-size: 0.72rem !important;
+        min-height: 48px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      /* HERO CTAs — stack vertical en pantallas muy pequeñas */
+      div[style*="display:flex; align-items:center; gap:16px; flex-wrap:wrap"] {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+      }
+      div[style*="display:flex; align-items:center; gap:16px; flex-wrap:wrap"] a {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+        display: flex !important;
+      }
+    }
+
+    /* ── Pantallas muy pequeñas: max 390px ── */
+    @media (max-width: 390px) {
+      .menu-grid article img {
+        height: 160px !important;
+      }
+      div[style*="height:340px"] {
+        height: 180px !important;
+      }
+    }
+
   </style>
 
 </body>
